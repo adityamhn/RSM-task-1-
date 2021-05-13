@@ -1,24 +1,42 @@
-import logo from './logo.svg';
 import './App.css';
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+import { useSelector } from 'react-redux'
+import { useRoutes, Navigate } from 'react-router-dom';
+
+
+
+import Home from './pages/Home/Home';
+import Login from './pages/Login/Login';
+import Register from './pages/Register/Register';
+import Dashboard from './pages/Dashboard/Dashboard';
+import ForgotPassword from './pages/ForgotPassword/ForgotPassword';
+import ResetPassword from './pages/ResetPassword/ResetPassword';
 
 function App() {
+  const user = useSelector(state => state.user.value)
+
+  const homeRoutes = [
+    { path: '/', element: <Home /> },
+    { path: '/login', element: <Login /> },
+    { path: '/register', element: <Register /> },
+    { path: '/forgot-password', element: <ForgotPassword /> },
+    { path: '/resetPassword/:token/:userId', element: <ResetPassword/> },
+    
+  ]
+
+  const loginRoutes = [
+    { path: '/dashboard', element: user ?  <Dashboard /> : <Navigate to="/" /> },
+  ]
+
+  const homeRouting = useRoutes(homeRoutes)
+  const loginRouting = useRoutes(loginRoutes);
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      {user ? <>{loginRouting}</> : <>{homeRouting}</>}
+    </>
   );
 }
 
