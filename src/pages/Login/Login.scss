@@ -1,17 +1,16 @@
 .login-cont {
-    //     background: url('../../images/Backgrounds/Student_Login.jpg') no-repeat center center fixed;
-    //   background-size: cover;
     min-width: 100vw;
     min-height: 100vh;
     padding: 0;
     margin: 0;
+    background: #ffffea;
 
     .wrapper {
         display: flex;
         align-items: center;
         justify-content: center;
         height: 100vh;
-
+        width: 100vw;
         .card {
             padding: 30px 40px;
             background: transparent;
@@ -26,9 +25,10 @@
 
                 .title {
                     //   color: #fff;
-                    font-size: 4rem;
+                    font-size: 5rem;
+                    font-weight: bold;
                     @media screen and (max-width: 560px) {
-                        font-size: 2.3rem;
+                        font-size: 3.5rem;
                     }
                 }
 
@@ -39,14 +39,15 @@
             }
 
             .group {
+                margin: 40px 0px;
+
                 .input-1 {
-                    background: #e5f2f7;
-                    border-radius: 10px;
+                    background: #d8d8d8;
+                    border-radius: 0px;
                     border: 0;
                     color: #000;
                     font-weight: 500;
                     height: 50px;
-                    margin: 40px 0px;
 
                     @media screen and (max-width: 560px) {
                         width: 100%;
@@ -57,14 +58,12 @@
                     }
                 }
                 .input-2 {
-                    background: #e5f2f7;
-                    border-radius: 10px;
-                    border: 0;
                     background: #224957;
-                    color: #fff;
+                    border-radius: 0px;
+                    border: 0;
+                    color: #000;
                     font-weight: 500;
                     height: 50px;
-                    margin: 40px 0px;
                     &::placeholder {
                         color: #fff;
                     }
@@ -75,9 +74,9 @@
                 }
 
                 .button {
-                    background: #68b9cb;
+                    background: #00cecb;
                     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.3);
-                    border-radius: 10px;
+                    border-radius: 0px;
                     border: none;
                     width: 30rem;
                     font-weight: 500;

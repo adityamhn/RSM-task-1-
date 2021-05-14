@@ -5,12 +5,12 @@ const API_AUTH_URL = "http://localhost:8000/api/auth/";
 
 export const loginThunk = createAsyncThunk(
     'user/loginUser',
-    async ( { email, password },{rejectWithValue} ) => {
-        try{
-        const res = await axios.post(API_AUTH_URL + "signin", { email, password })
-        return res.data
+    async ({ email, password }, { rejectWithValue }) => {
+        try {
+            const res = await axios.post(API_AUTH_URL + "signin", { email, password })
+            return res.data
         }
-        catch(err) {
+        catch (err) {
             return rejectWithValue(err.response.data);
         }
     }

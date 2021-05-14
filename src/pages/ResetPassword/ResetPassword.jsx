@@ -1,5 +1,5 @@
-import React, { useState,useEffect } from 'react'
-import { Form, Card, Button, Container, Spinner,Modal } from "react-bootstrap"
+import React, { useState, useEffect } from 'react'
+import { Form, Card, Button, Container, Spinner } from "react-bootstrap"
 import { Formik } from "formik";
 import * as yup from "yup";
 import { useNavigate, useParams } from 'react-router';
@@ -23,27 +23,27 @@ const formInitialValues = {
 
 const ResetPassword = () => {
     let { token, userId } = useParams()
-    const [tokenVerified,setTokenVerified] = useState(true)
-    const [loading,setLoading] = useState(false);
+    const [tokenVerified, setTokenVerified] = useState(true)
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate()
 
     useEffect(() => {
         setLoading(true)
-            checkResetPasswordToken(token, userId).then(res => {
-                if (res.data.message === 'link verified.') {
-                    setTokenVerified(true)
-                    setLoading(false)
-                }  else {
-                    setLoading(false)
-                    showAlert("Invalid! Unauthorized.")
-                    navigate('/',{replace:true})
-                }
-            })
-            
-    },[token,userId])
+        checkResetPasswordToken(token, userId).then(res => {
+            if (res.data.message === 'link verified.') {
+                setTokenVerified(true)
+                setLoading(false)
+            } else {
+                setLoading(false)
+                showAlert("Invalid! Unauthorized.")
+                navigate('/', { replace: true })
+            }
+        })
 
-    const onFormSubmit = async(credentials) => {
+    }, [token, userId])
+
+    const onFormSubmit = async (credentials) => {
 
         setLoading(true)
         const password = credentials.newPassword
@@ -54,7 +54,7 @@ const ResetPassword = () => {
             setLoading(false)
             showAlert(res.data.message)
         }
-  
+
     }
 
     return (
@@ -74,11 +74,11 @@ const ResetPassword = () => {
                             ({ handleChange, handleBlur, handleSubmit, values, touched, errors }) => {
                                 return (
                                     <>
-                                    <Form onSubmit={(e) => {
-                                        e.preventDefault()
-                                        handleSubmit()
-                                    }}>
-                        <Form.Group className="group">
+                                        <Form onSubmit={(e) => {
+                                            e.preventDefault()
+                                            handleSubmit()
+                                        }}>
+                                            <Form.Group className="group">
                                                 <Form.Control
                                                     type="password"
                                                     name="newPassword"
@@ -106,18 +106,19 @@ const ResetPassword = () => {
                                                     {errors.confirmNewPassword}
                                                 </Form.Control.Feedback>
                                             </Form.Group>
-                        <Form.Group className="group d-flex flex-column">
-                            <Button disabled={loading} type="submit" className="button w-100">
+                                            <Form.Group className="group d-flex flex-column">
+                                                <Button disabled={loading} type="submit" className="button w-100">
                                                     {loading ? <Spinner animation="border" variant="danger" /> : <>Submit</>}
                                                 </Button>
-                            {/* <Form.Text>New here? <Link to='/register'>Register</Link> </Form.Text>
+                                                {/* <Form.Text>New here? <Link to='/register'>Register</Link> </Form.Text>
                             <Form.Text>Forgot Password? <Link to='/forgot-password'>click here</Link> </Form.Text> */}
-                        </Form.Group>
-                    </Form>
+                                            </Form.Group>
+                                        </Form>
 
-                                    </>)}}
-                                    </Formik>
-                   
+                                    </>)
+                            }}
+                    </Formik>
+
                 </Card>
 
             </div>

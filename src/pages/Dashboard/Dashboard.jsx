@@ -1,10 +1,10 @@
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import { Button, Container } from 'react-bootstrap'
 import { useNavigate } from 'react-router'
 import { useDispatch } from "react-redux";
 import { logoutSuccess } from "../../store/user";
 import { useSelector } from 'react-redux'
-
+import './Dashboard.scss'
 
 const Dashboard = () => {
     const dispatch = useDispatch();
@@ -17,16 +17,20 @@ const Dashboard = () => {
         e.preventDefault();
         dispatch(logoutSuccess());
         navigate("/", { replace: true });
-      }
+    }
 
     return (
-        <Container fluid className="d-flex flex-column justify-content-center align-items-center w-100 h-100">
-        <p>
-        Hello, {user.name} 
-        </p>
-        <p>
-            <Button onClick={onLogout}>Logout</Button>
-        </p>
+        <Container fluid className="dash-cont">
+            <div className="header">
+                <h1 className="title">
+                    Hello, {user.name}
+
+                </h1>
+            </div>
+
+            <div className="logout-cont">
+                <Button className="logout" onClick={onLogout}>Logout</Button>
+            </div>
         </Container>
     )
 }

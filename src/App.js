@@ -1,4 +1,4 @@
-import './App.css';
+import './App.scss';
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 import { useSelector } from 'react-redux'
@@ -21,12 +21,14 @@ function App() {
     { path: '/login', element: <Login /> },
     { path: '/register', element: <Register /> },
     { path: '/forgot-password', element: <ForgotPassword /> },
-    { path: '/resetPassword/:token/:userId', element: <ResetPassword/> },
-    
+    { path: '/resetPassword/:token/:userId', element: <ResetPassword /> },
+
   ]
 
   const loginRoutes = [
-    { path: '/dashboard', element: user ?  <Dashboard /> : <Navigate to="/" /> },
+    { path: '/dashboard', element: user ? <Dashboard /> : <Navigate to="/" /> },
+    { path: '/', element: user ? <Dashboard /> : <Navigate to="/" /> },
+    { path: '*', element: <Navigate to="/" /> },
   ]
 
   const homeRouting = useRoutes(homeRoutes)

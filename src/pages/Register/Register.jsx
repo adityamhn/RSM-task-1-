@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import { Form, Card, Button, Container, Spinner,Modal } from "react-bootstrap"
-import { Link, useNavigate } from 'react-router-dom'
+import { Form, Card, Button, Container, Spinner, Modal } from "react-bootstrap"
+import { Link } from 'react-router-dom'
 import './Register.scss'
 import { Formik } from "formik";
 import * as yup from "yup";
@@ -27,7 +27,6 @@ const formInitialValues = {
 }
 
 const Register = () => {
-    const navigate = useNavigate()
 
     const [modalOpen, setModalOpen] = useState(false);
     const [loading, setLoading] = useState(false);
@@ -42,7 +41,6 @@ const Register = () => {
 
         try {
             const res = await register(name, email, password)
-            console.log(res)
             if (res) {
                 openModal()
             }
@@ -135,10 +133,9 @@ const Register = () => {
                 <Modal.Title>Account Created</Modal.Title>
             </Modal.Header>
             <Modal.Body>A verification email has been sent. Please check your email and click on the link to verify your account.</Modal.Body>
-            <Modal.Footer>
-                <Button variant="secondary" onClick={closeModal}>
-                    Close
-          </Button>
+            <Modal.Footer style={{
+                border: 'none'
+            }}>
             </Modal.Footer>
         </Modal>
     </>

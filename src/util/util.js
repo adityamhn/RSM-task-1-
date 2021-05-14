@@ -8,8 +8,7 @@ export const showAlert = (titleText = 'Something happened.', alertType) => {
     timerProgressBar: true,
     toast: true,
     showConfirmButton: false,
-    showCancelButton: true,
-    cancelButtonText: 'Dismiss',
+    showCancelButton: false,
     icon: alertType,
     showClass: {
       popup: 'swal2-noanimation',
