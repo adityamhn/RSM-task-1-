@@ -1,7 +1,7 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios'
 
-const API_AUTH_URL = "http://localhost:8000/api/auth/";
+const API_AUTH_URL = "https://intense-peak-83897.herokuapp.com/api/auth/";
 
 export const loginThunk = createAsyncThunk(
     'user/loginUser',

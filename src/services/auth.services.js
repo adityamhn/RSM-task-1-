@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const API_AUTH_URL = "http://localhost:8000/api/auth/";
+const API_AUTH_URL = "https://intense-peak-83897.herokuapp.com/api/auth/";
 
 export const register = async (name, email, password) => {
   const res = await axios.post(API_AUTH_URL + "signup", {
